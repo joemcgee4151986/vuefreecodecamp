@@ -5,22 +5,41 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
-    <style></style>
+    <style>
+      .box{
+        background-color: green;
+        height: 300px;
+        width: 400px;
+      }
+      .box.two{
+        background-color: purple;
+      }
+      .box.three{
+        background-color:pink;
+      }
+      [v-cloak] {
+        display:none;
+      }
+    </style>
   </head>
   <body>
    
-    <div id="app">{{greeting}}</div>
+    <div id="app" v-cloak>{{greeting}}
     <input v-model ="greeting"/>
 
     <hr />
     <div v-if="isVisible" class = "box"></div>
+    <div v-else-if="isVisible2" class ="box two"></div>
+    <div v-else class = "box three"></div>
+  </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
      let app = Vue.createApp({
       data: function(){
         return{
           greeting: 'Hello vue!',
-          isVisible: true
+          isVisible: false,
+          isVisible2:true
         }
       }
      })
